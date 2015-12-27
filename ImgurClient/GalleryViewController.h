@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImgurImage.h"
+#import "Topic.h"
 
 @interface GalleryViewController : UIViewController
+
+@property (nonatomic, strong) NSMutableArray *imageArr;
+@property (nonatomic, strong) Topic *selectedTopic;
 
 @end

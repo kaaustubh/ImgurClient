@@ -12,6 +12,7 @@
 #import "TopicsManager.h"
 #import "MBProgressHUD.h"
 #import "Topic.h"
+#import "GalleryViewController.h"
 
 @interface ViewController ()
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic)   NSArray *menuItems;
 @property (strong, nonatomic)   NSMutableArray *topics;
 @property (weak, nonatomic)     IBOutlet UITableView *topicsTableView;
+@property (assign, nonatomic) NSInteger selectedTopicIndex;
 
 @end
 
@@ -29,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _selectedTopicIndex=-1;
     self.menuItems = @[@"Popular", @"Newest"];
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort By" style:UIBarButtonItemStylePlain target:self action:@selector(sortByButtonTapped)];
     self.navigationItem.rightBarButtonItem = anotherButton;
@@ -132,11 +135,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    self.currentMapTypeIndex = indexPath.row;
-    
-    [self.dropdownView hide];
+    if (tableView == _topicsTableView)
+    {
+        _selectedTopicIndex=indexPath.row;
+        [self performSegueWithIdentifier:@"ShowGallerySegue" sender:nil];
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        self.currentMapTypeIndex = indexPath.row;
+        [self.dropdownView hide];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -194,5 +203,14 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+#pragma mark- Segue methods
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowGallerySegue"])
+    {
+        GalleryViewController *destinationViewController=(GalleryViewController*)segue.destinationViewController;
+        destinationViewController.selectedTopic=_topics[_selectedTopicIndex];
+    }
+}
 
 @end

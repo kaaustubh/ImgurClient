@@ -19,10 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[AccountManager sharedInstance] getAccountDetailsForAccountName:@"DonQuixoteDonFlamingo" completion:^(ImgurAccount *acc, NSError *error)
-    {
-        
-    }];
+//    [[AccountManager sharedInstance] getAccountDetailsForAccountName:@"DonQuixoteDonFlamingo" completion:^(ImgurAccount *acc, NSError *error)
+//    {
+//        
+//    }];
     return YES;
 }
 

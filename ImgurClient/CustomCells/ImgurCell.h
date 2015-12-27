@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CachedImageView.h"
 
 @interface ImgurCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet CachedImageView *cImageView;
+@property (nonatomic, weak) IBOutlet UILabel *primaryLabel;
 @property (nonatomic, weak) IBOutlet UILabel *secondaryLabel;
 
 @end

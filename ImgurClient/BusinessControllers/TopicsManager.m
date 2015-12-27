@@ -9,6 +9,7 @@
 #import "TopicsManager.h"
 #import "HTTPManager.h"
 #import "Topic.h"
+#import "ImgurImage.h"
 
 #define kClientID       @"b5bf2800c00cd80"
 #define kSuccess        @"success"
@@ -102,6 +103,20 @@
     
     NSError *e = nil;
     NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    if ([[jsonArray objectForKey:kSuccess] integerValue] == 1)
+    {
+        NSArray *arrOfDict=jsonArray[kData];
+        ImgurImage *newImage;
+        if (arrOfDict.count)
+        {
+            arr=[NSMutableArray array];
+        }
+        for (NSDictionary *dict in arrOfDict)
+        {
+            newImage=[[ImgurImage alloc] initWithDictionary:dict];
+            [arr addObject:newImage];
+        }
+    }
     return arr;
 }
 

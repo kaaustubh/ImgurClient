@@ -19,7 +19,10 @@
     self =[super init];
     if (self)
     {
-        _imageDescription=dict[kDescription];
+        _imageDescription=@"None";
+        _userName=@"";
+        if (dict[kDescription])
+            _imageDescription=dict[kDescription];
         _imageURL=dict[kURL];
         _userName=dict[kUserName];
         double timerstamp=[dict[kDate] doubleValue];

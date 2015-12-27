@@ -131,26 +131,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="U7V-e1-oQl" customClass="ImgurCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImgurCell" rowHeight="64" id="U7V-e1-oQl" customClass="ImgurCell">
                                         <rect key="frame" x="0.0" y="92" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7V-e1-oQl" id="1c8-wW-1aT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wm8-Ti-Omc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wm8-Ti-Omc" customClass="CachedImageView">
                                                     <rect key="frame" x="8" y="6" width="52" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="52" id="VkI-qP-Mbc"/>
                                                         <constraint firstAttribute="width" constant="52" id="VkU-LX-52o"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRP-zI-bgK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRP-zI-bgK">
                                                     <rect key="frame" x="65" y="6" width="530" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9Kp-rO-1Hg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -175,8 +175,17 @@
                                                 <constraint firstItem="Wm8-Ti-Omc" firstAttribute="centerY" secondItem="1c8-wW-1aT" secondAttribute="centerY" id="nkt-pV-yJ0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cImageView" destination="Wm8-Ti-Omc" id="Ofq-Jd-8Jp"/>
+                                            <outlet property="primaryLabel" destination="aRP-zI-bgK" id="4kE-g5-Y98"/>
+                                            <outlet property="secondaryLabel" destination="0ga-B7-fps" id="hDA-5v-TLn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="frc-Gc-DNK" id="J05-2o-j8A"/>
+                                    <outlet property="delegate" destination="frc-Gc-DNK" id="4rG-cW-xAL"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,6 +196,9 @@
                             <constraint firstItem="4Nv-x5-ELm" firstAttribute="leading" secondItem="VxS-QI-WVW" secondAttribute="leading" id="vny-tQ-9hF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="4Nv-x5-ELm" id="F6m-Z6-dN5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APv-vH-ANP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

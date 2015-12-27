@@ -12,4 +12,6 @@
 
 @interface CachedImageView : UIImageView
 
+-(void)setURLString:(NSString*)urlstr;
+
 @end

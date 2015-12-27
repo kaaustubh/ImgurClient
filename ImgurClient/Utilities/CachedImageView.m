@@ -65,17 +65,14 @@
         [self addSubview:activityIndicator];
         [activityIndicator startAnimating];
         HTTPManager *sharedManager=[HTTPManager sharedInstance];
-        if(_imageReference.length>0)
-        {
-            [sharedManager sendRequestForURL:_urlString withAuthToken:nil Success:^(NSData *data)
-             {
-                 [weakSelf saveImage:data];
-                 [activityIndicator stopAnimating];
-             }Failure:^(NSError *error)
-             {
-                 [activityIndicator stopAnimating];
-             }];
-        }
+        [sharedManager sendRequestForURL:_urlString withAuthToken:nil Success:^(NSData *data)
+         {
+             [weakSelf saveImage:data];
+             [activityIndicator stopAnimating];
+         }Failure:^(NSError *error)
+         {
+             [activityIndicator stopAnimating];
+         }];
     }
 }
 
@@ -85,7 +82,8 @@
     NSString  *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:path];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
     
-    if (!fileExists) {
+    if (!fileExists)
+    {
         imagePath=nil;
     }
     return imagePath;
