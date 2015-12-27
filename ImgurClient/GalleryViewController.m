@@ -66,12 +66,47 @@
     _sortButton.enabled=false;
     [[TopicsManager sharedInstance] getTopImagesForTopic:_selectedTopic.topicName completion:^(NSMutableArray *arr, NSError *error)
      {
-         _sortButton.enabled=true;
          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-         _imageArr=arr;
-         [_tableView reloadData];
+         if (error)
+         {
+             [self showErrorMessage:error];
+             return ;
+         }
+         if (arr.count)
+         {
+             _sortButton.enabled=true;
+             
+             _imageArr=arr;
+             [_tableView reloadData];
+         }
+         else
+         {
+             [self showNoImagesAlert];
+             return ;
+         }
+         
          self.title=[NSString stringWithFormat:@"Top images for %@", _selectedTopic.topicName];
      }];
+}
+
+-(void)showErrorMessage:(NSError*)error
+{
+    UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"Error" message:error.description preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil];
+    [alert addAction:actionOk];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)showNoImagesAlert
+{
+    UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"Error" message:@"No images found for the current topic" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil];
+    [alert addAction:actionOk];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)getViralImages
@@ -81,10 +116,23 @@
     [[MBProgressHUD HUDForView:self.view] setLabelText:[NSString stringWithFormat:@"Searching images for %@", _selectedTopic.topicName]];
     [[TopicsManager sharedInstance] getViralImagesForTopic:_selectedTopic.topicName completion:^(NSMutableArray *arr, NSError *error)
      {
-         _sortButton.enabled=true;
          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-         _imageArr=arr;
-         [_tableView reloadData];
+         if (error)
+         {
+             [self showErrorMessage:error];
+             return ;
+         }
+         if (arr.count)
+         {
+             _sortButton.enabled=true;
+             _imageArr=arr;
+             [_tableView reloadData];
+         }
+         else
+         {
+             [self showNoImagesAlert];
+             return;
+         }
          self.title=[NSString stringWithFormat:@"Viral images for %@", _selectedTopic.topicName];
      }];
 }

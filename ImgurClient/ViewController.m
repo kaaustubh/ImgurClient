@@ -34,8 +34,6 @@
     [super viewDidLoad];
     _selectedTopicIndex=-1;
     self.menuItems = @[@"Popular", @"Newest"];
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort By" style:UIBarButtonItemStylePlain target:self action:@selector(sortByButtonTapped)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
     [self.menuTableView setFrame:CGRectMake(0,
                                             0,
                                             CGRectGetWidth(self.view.bounds),
@@ -45,7 +43,10 @@
 }
 
 
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.title=@"Imgur Topics";
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

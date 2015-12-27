@@ -77,7 +77,7 @@
 
 -(void)getTopImagesForTopic:(NSString*)topicId completion:(void(^)(NSMutableArray *array, NSError *error))completionBlock
 {
-    NSString *url=[NSString stringWithFormat:kImagesURL, topicId, @"top" ];
+    NSString *url=[NSString stringWithFormat:kImagesURL, [topicId stringByReplacingOccurrencesOfString:@" " withString:@"_"], @"top" ];
     
     [[HTTPManager sharedInstance] sendRequestForURL:url withAuthToken:kClientID Success:^(NSData *data)
      {
@@ -98,7 +98,8 @@
 
 -(void)getViralImagesForTopic:(NSString*)topicId completion:(void(^)(NSMutableArray *array, NSError *error))completionBlock
 {
-    NSString *url=[NSString stringWithFormat:kImagesURL, topicId, @"viral" ];
+    
+    NSString *url=[NSString stringWithFormat:kImagesURL, [topicId stringByReplacingOccurrencesOfString:@" " withString:@"_"], @"viral" ];
     [[HTTPManager sharedInstance] sendRequestForURL:url withAuthToken:kClientID Success:^(NSData *data)
      {
          NSMutableArray *arr=[self getImagesFromData:data];
