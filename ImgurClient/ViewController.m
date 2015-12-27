@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "Topic.h"
 #import "GalleryViewController.h"
+#import "ImageDetailsViewController.h"
 
 @interface ViewController ()
 
@@ -135,6 +136,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (tableView == _topicsTableView)
     {
         _selectedTopicIndex=indexPath.row;
@@ -142,7 +144,6 @@
     }
     else
     {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
         self.currentMapTypeIndex = indexPath.row;
         [self.dropdownView hide];
     }

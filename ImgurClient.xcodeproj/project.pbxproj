@@ -26,6 +26,7 @@
 		324B657E1C2FD00500BC2150 /* ImgurAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 324B657D1C2FD00500BC2150 /* ImgurAccount.m */; };
 		324B65811C2FD01900BC2150 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 324B65801C2FD01900BC2150 /* AccountManager.m */; };
 		324B65841C2FDA2800BC2150 /* CachedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 324B65831C2FDA2800BC2150 /* CachedImageView.m */; };
+		324B65881C3009FD00BC2150 /* ImageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324B65871C3009FD00BC2150 /* ImageDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		324B65801C2FD01900BC2150 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountManager.m; path = BusinessControllers/AccountManager.m; sourceTree = "<group>"; };
 		324B65821C2FDA2800BC2150 /* CachedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CachedImageView.h; path = Utilities/CachedImageView.h; sourceTree = "<group>"; };
 		324B65831C2FDA2800BC2150 /* CachedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CachedImageView.m; path = Utilities/CachedImageView.m; sourceTree = "<group>"; };
+		324B65861C3009FD00BC2150 /* ImageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetailsViewController.h; sourceTree = "<group>"; };
+		324B65871C3009FD00BC2150 /* ImageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				324B653B1C2FABC600BC2150 /* Supporting Files */,
 				324B65731C2FC54E00BC2150 /* GalleryViewController.h */,
 				324B65741C2FC54E00BC2150 /* GalleryViewController.m */,
+				324B65861C3009FD00BC2150 /* ImageDetailsViewController.h */,
+				324B65871C3009FD00BC2150 /* ImageDetailsViewController.m */,
 			);
 			path = ImgurClient;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				324B655D1C2FAEA300BC2150 /* Topic.m in Sources */,
 				324B656A1C2FB6CC00BC2150 /* LMDropdownView.m in Sources */,
 				324B657B1C2FCF8D00BC2150 /* ImgurImage.m in Sources */,
+				324B65881C3009FD00BC2150 /* ImageDetailsViewController.m in Sources */,
 				324B65811C2FD01900BC2150 /* AccountManager.m in Sources */,
 				324B65551C2FABFC00BC2150 /* HTTPManager.m in Sources */,
 				324B65781C2FCF3100BC2150 /* ImgurCell.m in Sources */,
@@ -434,6 +440,7 @@
 				324B65511C2FABC600BC2150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

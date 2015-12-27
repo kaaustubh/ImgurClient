@@ -13,5 +13,6 @@
 + (id)sharedInstance;
 -(void)getTopicsWithCompletion:(void(^)(NSMutableArray *array, NSError *error))completionBlock;
 -(void)getTopImagesForTopic:(NSString*)topicId completion:(void(^)(NSMutableArray *array, NSError *error))completionBlock;
+-(void)getViralImagesForTopic:(NSString*)topicId completion:(void(^)(NSMutableArray *array, NSError *error))completionBlock;
 
 @end

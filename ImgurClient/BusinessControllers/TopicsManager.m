@@ -94,7 +94,26 @@
              completionBlock(nil, error);
          }
      }];
-    
+}
+
+-(void)getViralImagesForTopic:(NSString*)topicId completion:(void(^)(NSMutableArray *array, NSError *error))completionBlock
+{
+    NSString *url=[NSString stringWithFormat:kImagesURL, topicId, @"viral" ];
+    [[HTTPManager sharedInstance] sendRequestForURL:url withAuthToken:kClientID Success:^(NSData *data)
+     {
+         NSMutableArray *arr=[self getImagesFromData:data];
+         if (completionBlock)
+         {
+             completionBlock(arr, nil);
+         }
+         
+     }Failure:^(NSError * error)
+     {
+         if (completionBlock)
+         {
+             completionBlock(nil, error);
+         }
+     }];
 }
 
 -(NSMutableArray*)getImagesFromData:(NSData*)data
